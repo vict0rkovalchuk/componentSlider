@@ -2,7 +2,7 @@
 
 How to use?
 
-1.  This goes to the <body> of your page:
+1.  This goes to the `<body>` of your page:
 
     ```
     <div class="lightbox js-lightbox" style="z-index: 1000">
@@ -25,7 +25,7 @@ How to use?
     </div>
     ```
 
-2.  Then, wherever you want the gallery in your page <body>:
+2.  Then, wherever you want the gallery in your page `<body>`:
 
 ```
 <div class="gallery">
@@ -41,6 +41,6 @@ How to use?
     Finally, for using just call init method with your class name:
     `new Gallery('gallery').init();`
 
-_[Example]:https://vict0rkovalchuk.github.io/gallery/_
+_[Example]: https://vict0rkovalchuk.github.io/gallery/_
 
 4. Enjoy!
