@@ -8,13 +8,37 @@ class Gallery {
     this.next = document.querySelector('.lightbox .btn-next');
     this.btn = document.querySelector('.lightbox .lightbox__button');
     this.overlayRef = document.querySelector('.lightbox .lightbox__overlay');
+    this.slideIndex = null;
+    this.slides = document.querySelectorAll(`.${this.galleryClassName} img`);
+    this.arr = Array.from(this.slides);
   }
+
+  activeSlide = n => {
+    this.imageRef.src = this.slides[n].src;
+  };
+
+  nextSlide = () => {
+    if (this.slideIndex == this.slides.length - 1) {
+      this.slideIndex = 0;
+      this.activeSlide(this.slideIndex);
+    } else {
+      this.slideIndex++;
+      this.activeSlide(this.slideIndex);
+    }
+  };
+
+  prevSlide = () => {
+    if (this.slideIndex == 0) {
+      this.slideIndex = this.slides.length - 1;
+      this.activeSlide(this.slideIndex);
+    } else {
+      this.slideIndex--;
+      this.activeSlide(this.slideIndex);
+    }
+  };
 
   ongalleryClick(event) {
     event.preventDefault();
-
-    let slides = document.querySelectorAll(`.${this.galleryClassName} img`);
-    let arr = Array.from(slides);
 
     if (event.target.nodeName !== 'IMG') {
       return;
@@ -24,44 +48,20 @@ class Gallery {
     this.imageRef.src = event.target.src;
 
     {
-      let slideIndex = arr.indexOf(event.target);
+      this.slideIndex = this.arr.indexOf(event.target);
 
-      const activeSlide = n => {
-        this.imageRef.src = slides[n].src;
-      };
-
-      const nextSlide = () => {
-        if (slideIndex == slides.length - 1) {
-          slideIndex = 0;
-          activeSlide(slideIndex);
-        } else {
-          slideIndex++;
-          activeSlide(slideIndex);
-        }
-      };
-
-      const prevSlide = () => {
-        if (slideIndex == 0) {
-          slideIndex = slides.length - 1;
-          activeSlide(slideIndex);
-        } else {
-          slideIndex--;
-          activeSlide(slideIndex);
-        }
-      };
-
-      this.next.addEventListener('click', nextSlide);
-      this.prev.addEventListener('click', prevSlide);
+      this.next.addEventListener('click', this.nextSlide);
+      this.prev.addEventListener('click', this.prevSlide);
 
       window.addEventListener('keydown', event => {
         if (event.code === 'ArrowRight') {
-          nextSlide();
+          this.nextSlide();
         }
       });
 
       window.addEventListener('keydown', event => {
         if (event.code === 'ArrowLeft') {
-          prevSlide();
+          this.prevSlide();
         }
       });
     }
