@@ -9,8 +9,6 @@ class Gallery {
     this.btn = document.querySelector('.lightbox .lightbox__button');
     this.overlayRef = document.querySelector('.lightbox .lightbox__overlay');
     this.slideIndex = null;
-    this.slides = document.querySelectorAll(`.${this.galleryClassName} img`);
-    this.arr = Array.from(this.slides);
   }
 
   activeSlide = n => {
@@ -37,8 +35,11 @@ class Gallery {
     }
   };
 
-  ongalleryClick(event) {
+  ongalleryClick = event => {
     event.preventDefault();
+
+    this.slides = document.querySelectorAll(`.${this.galleryClassName} img`);
+    this.arr = Array.from(this.slides);
 
     if (event.target.nodeName !== 'IMG') {
       return;
@@ -83,10 +84,10 @@ class Gallery {
       document.body.style.overflow = '';
     });
     document.body.style.overflow = 'hidden';
-  }
+  };
 
   addListener() {
-    this.gallery.addEventListener('click', this.ongalleryClick.bind(this));
+    this.gallery.addEventListener('click', this.ongalleryClick);
   }
 
   init() {
