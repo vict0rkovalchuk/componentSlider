@@ -25,7 +25,7 @@ How to use?
     </div>
     ```
 
-2.  Then, wherever you want the gallery in your page `<body>`:
+2.  Then, wherever you want paste the gallery markup in `<body>` of your page:
 
 ```
 <div class="gallery">
@@ -35,11 +35,11 @@ How to use?
 </div>
 ```
 
-3.  Include style.css and slider.js files. Paste this line to your js file where you want to use this slider:
+3.  Include style.css and slider.js files. Paste the line below into your js file to use this slider:
     `import Gallery from './slider';`
 
     Finally, for using just call init method with your class name:
-    `new Gallery('gallery').init();`
+    `new Gallery('classname').init();`
 
 _[Example]: https://vict0rkovalchuk.github.io/gallery/_
 
