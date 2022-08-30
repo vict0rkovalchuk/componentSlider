@@ -35,7 +35,7 @@ How to use?
 </div>
 ```
 
-3.  Include style.css and slider.js files. Paste the line below into your js file to use this slider:
+3.  Include [style.css](https://github.com/vict0rkovalchuk/componentSlider/blob/main/style.css) and [slider.js](https://github.com/vict0rkovalchuk/componentSlider/blob/main/slider.js) files. Paste the line below into your js file to use this slider:
     `import Gallery from './slider';`
 
     Finally, for using just call init method with your class name:
